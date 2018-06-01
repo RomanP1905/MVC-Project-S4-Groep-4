@@ -1,0 +1,13 @@
+{
+  "User": {
+    "Id": 2133107,
+    "Username": "feni12",
+    "Name": "Felix",
+    "Email": "felix2000f@hotmail.com",
+    "AvatarUrl": "https://secure.gravatar.com/avatar/5bf76c3da78c18445537c07da554587e?s=80&d=identicon",
+    "PrivateToken": "58a3fba91ad87303f220ba07f029688ae2e74365bfe74cb9b10493f7002b9fb8",
+    "Host": "https://gitlab.com",
+    "TwoFactorEnabled": false,
+    "ApiVersion": 3
+  }
+}

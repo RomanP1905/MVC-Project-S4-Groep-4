@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAO-Wagenpark", "ProjectAO-Wagenpark\ProjectAO-Wagenpark.csproj", "{A2F58056-8628-43C9-9421-11A4C7BDE9A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAO-Wagenpark.Tests", "ProjectAO-Wagenpark.Tests\ProjectAO-Wagenpark.Tests.csproj", "{FB96C944-5C6C-414B-82D4-07BBB5AD2216}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2F58056-8628-43C9-9421-11A4C7BDE9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2F58056-8628-43C9-9421-11A4C7BDE9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2F58056-8628-43C9-9421-11A4C7BDE9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2F58056-8628-43C9-9421-11A4C7BDE9A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB96C944-5C6C-414B-82D4-07BBB5AD2216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB96C944-5C6C-414B-82D4-07BBB5AD2216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB96C944-5C6C-414B-82D4-07BBB5AD2216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB96C944-5C6C-414B-82D4-07BBB5AD2216}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCAE6696-0543-462B-B84E-AE2031450413}
+	EndGlobalSection
+EndGlobal
