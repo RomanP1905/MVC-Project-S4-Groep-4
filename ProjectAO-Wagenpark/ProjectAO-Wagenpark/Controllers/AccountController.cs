@@ -12,7 +12,7 @@ using ProjectAO_Wagenpark.Models;
 
 namespace ProjectAO_Wagenpark.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

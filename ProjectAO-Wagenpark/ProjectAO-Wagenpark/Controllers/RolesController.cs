@@ -7,6 +7,7 @@ using ProjectAO_Wagenpark.Models;
 
 namespace ProjectAO_Wagenpark.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         public ActionResult Index()
