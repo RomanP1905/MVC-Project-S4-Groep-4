@@ -190,9 +190,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutosController.cs" />
+    <Compile Include="Controllers\DealersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OnderhoudsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\WerkplaatsController.cs" />
     <Compile Include="DataAccesLayer\WagenparkContext.cs" />
     <Compile Include="DataAccesLayer\WagenparkInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -265,6 +269,26 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Autos\Create.cshtml" />
+    <Content Include="Views\Autos\Delete.cshtml" />
+    <Content Include="Views\Autos\Details.cshtml" />
+    <Content Include="Views\Autos\Edit.cshtml" />
+    <Content Include="Views\Autos\Index.cshtml" />
+    <Content Include="Views\Dealers\Create.cshtml" />
+    <Content Include="Views\Dealers\Delete.cshtml" />
+    <Content Include="Views\Dealers\Details.cshtml" />
+    <Content Include="Views\Dealers\Edit.cshtml" />
+    <Content Include="Views\Dealers\Index.cshtml" />
+    <Content Include="Views\Werkplaats\Create.cshtml" />
+    <Content Include="Views\Werkplaats\Delete.cshtml" />
+    <Content Include="Views\Werkplaats\Details.cshtml" />
+    <Content Include="Views\Werkplaats\Edit.cshtml" />
+    <Content Include="Views\Werkplaats\Index.cshtml" />
+    <Content Include="Views\Onderhouds\Create.cshtml" />
+    <Content Include="Views\Onderhouds\Delete.cshtml" />
+    <Content Include="Views\Onderhouds\Details.cshtml" />
+    <Content Include="Views\Onderhouds\Edit.cshtml" />
+    <Content Include="Views\Onderhouds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

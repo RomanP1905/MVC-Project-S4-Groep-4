@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using ProjectAO_Wagenpark.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectAO_Wagenpark.DataAccesLayer
 {
     public class WagenparkInitializer
     {
-        public class SchoolInitializer : System.Data.Entity.
+        public class wagenparkInitializer : System.Data.Entity.
             DropCreateDatabaseIfModelChanges<WagenparkContext>
         {
             protected override void Seed(WagenparkContext context)

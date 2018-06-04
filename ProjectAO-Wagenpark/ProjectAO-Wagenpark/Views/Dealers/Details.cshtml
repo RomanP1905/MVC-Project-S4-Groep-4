@@ -1,0 +1,31 @@
+﻿@model ProjectAO_Wagenpark.Models.Dealer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dealer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DealerNR)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DealerNR)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DealerNR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
