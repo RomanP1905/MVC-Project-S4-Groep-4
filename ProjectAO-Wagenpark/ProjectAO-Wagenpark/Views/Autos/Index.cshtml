@@ -34,11 +34,20 @@
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>
+        @if (User.IsInRole("Admin"))
+    {
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Kenteken }) |
             @Html.ActionLink("Details", "Details", new { id = item.Kenteken }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Kenteken })
         </td>
+}
+        else
+        {
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Kenteken })
+            </td>
+        }
     </tr>
 }
 

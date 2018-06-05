@@ -20,20 +20,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OnderhoudsDatum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OnderhoudsKosten)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.OnderhoudsDatum }) |
-            @Html.ActionLink("Details", "Details", new { id = item.OnderhoudsDatum }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.OnderhoudsDatum })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnderhoudsDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnderhoudsKosten)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OnderhoudsDatum }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OnderhoudsDatum }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OnderhoudsDatum })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.OnderhoudsDatum })
+                </td>
+            }
+        </tr>
+    }
 
 </table>
