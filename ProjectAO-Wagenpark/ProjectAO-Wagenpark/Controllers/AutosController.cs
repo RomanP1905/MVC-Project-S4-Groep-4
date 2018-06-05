@@ -37,6 +37,7 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Autos/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +48,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Kenteken,Merk,Type")] Auto auto)
         {
             if (ModelState.IsValid)
@@ -60,6 +62,7 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Autos/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -79,6 +82,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Kenteken,Merk,Type")] Auto auto)
         {
             if (ModelState.IsValid)
@@ -91,6 +95,7 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Autos/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -108,6 +113,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // POST: Autos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(string id)
         {
             Auto auto = db.Autos.Find(id);
