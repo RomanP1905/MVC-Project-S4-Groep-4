@@ -115,10 +115,6 @@ textarea {
 }
 
 
-.panel-body {
-    color: grey !important;
-}
-
 /* text placeholders */
 ::-webkit-input-placeholder {
     text-align: center;
