@@ -79,6 +79,7 @@ textarea {
 .form-control {
     background-color: #292929;
     opacity: 0.7;
+    color: white;
 }
 
 #loginForm {
@@ -94,7 +95,7 @@ textarea {
     display: block;
     padding: 20px;
     background-color: #292929;
-    color: 
+    text-align: center;
 }
 
 #Password {
@@ -102,6 +103,15 @@ textarea {
     background-color: #292929;
     padding: 20px;
     display: block;
+    text-align: center;
+}
+
+#ConfirmPassword {
+    background: url(/Content/Images/lock.png) no-repeat 5%;
+    background-color: #292929;
+    padding: 20px;
+    display: block;
+    text-align: center;
 }
 
 
