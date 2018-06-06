@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ProjectAO_Wagenpark.Models.Onderhoud>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OnderhoudsDatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnderhoudsKosten)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnderhoudsDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnderhoudsKosten)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OnderhoudsDatum }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OnderhoudsDatum }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OnderhoudsDatum })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.OnderhoudsDatum })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
