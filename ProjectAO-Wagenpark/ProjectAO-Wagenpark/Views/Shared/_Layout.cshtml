@@ -26,6 +26,20 @@
                     <ul class="nav navbar-nav">
                         @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                         <li>@Html.ActionLink("Role Manager", "Index", "Roles")</li>
+                        <li>@Html.ActionLink("Auto's", "Index", "Autos")</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Dealers", "Index", "Dealers")</li>
+                        <li>@Html.ActionLink("Werkplaatsen", "Index", "Werkplaats")</li>
+
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+            else if (User.IsInRole("Dealer"))
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">                        
+                        <li>@Html.ActionLink("Onderhoud Invoeren", "Index", "Onderhouds")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -34,8 +48,7 @@
             {
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        
-                        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
