@@ -18,6 +18,15 @@ namespace ProjectAO_Wagenpark.Controllers
         public ActionResult Index()
         {
             var onderhoud = db.Onderhoud.Include(o => o.Auto).Include(o => o.Werkplaats);
+
+            //var onderhoud = from oh in db.Onderhoud
+            //                 join au in db.Auto on oh.auto_kenteken equals au.kenteken
+            //                 join dl in db.Dealer on au.DEALER_DealerNr equals dl.dealernr
+            //                 where au.DEALER_DealerNr == dl.dealernr
+            //                 select oh;
+            
+
+
             return View(onderhoud.ToList());
         }
 
