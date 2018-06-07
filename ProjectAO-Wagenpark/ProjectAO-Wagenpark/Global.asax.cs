@@ -18,7 +18,7 @@ namespace ProjectAO_Wagenpark
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WagenparkContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<WagenparkContext>());
         }
     }
 }

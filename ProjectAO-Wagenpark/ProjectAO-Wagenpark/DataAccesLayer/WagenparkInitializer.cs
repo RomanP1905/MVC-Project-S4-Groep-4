@@ -11,7 +11,7 @@ namespace ProjectAO_Wagenpark.DataAccesLayer
     public class WagenparkInitializer
     {
         public class wagenparkInitializer : System.Data.Entity.
-            DropCreateDatabaseIfModelChanges<WagenparkContext>
+            DropCreateDatabaseAlways<WagenparkContext>
         {
             protected override void Seed(WagenparkContext context)
             {
