@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -12,38 +13,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OnderhoudsDatum)
+            @Html.DisplayNameFor(model => model.Auto.merk)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OnderhoudsKosten)
+            @Html.DisplayNameFor(model => model.Werkplaats.naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kosten)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OnderhoudsDatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OnderhoudsKosten)
-            </td>
-            @if (User.IsInRole("Admin"))
-            {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OnderhoudsDatum }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OnderhoudsDatum }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OnderhoudsDatum })
-                </td>
-            }
-            else
-            {
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.OnderhoudsDatum })
-                </td>
-            }
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Auto.merk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Werkplaats.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kosten)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
 
 </table>

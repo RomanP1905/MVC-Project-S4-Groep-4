@@ -6,7 +6,7 @@ namespace ProjectAO_Wagenpark.DataAccesLayer
 {
     public class WagenparkContext : DbContext
     {
-        public WagenparkContext() : base ("name=WagenparkConnection")
+        public WagenparkContext() : base("name=WagenparkConnection")
         {
 
         }

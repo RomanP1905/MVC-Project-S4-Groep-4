@@ -1,4 +1,4 @@
-﻿using ProjectAO_Wagenpark.DataAccesLayer;
+﻿//using ProjectAO_Wagenpark.DataAccesLayer;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +18,7 @@ namespace ProjectAO_Wagenpark
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer(new DropCreateDatabaseAlways<WagenparkContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<WagenparkContext>());
         }
     }
 }

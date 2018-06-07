@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WagenparkDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Auto">
+    <Key>
+      <PropertyRef Name="kenteken" />
+    </Key>
+    <Property Name="kenteken" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="merk" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="DEALER_DealerNr" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dealer" Relationship="Self.auto_dealer_fk" FromRole="Auto" ToRole="Dealer" />
+    <NavigationProperty Name="Onderhouds" Relationship="Self.onderhoud_auto_fk" FromRole="Auto" ToRole="Onderhoud" />
+  </EntityType>
+  <EntityType Name="Dealer">
+    <Key>
+      <PropertyRef Name="dealernr" />
+    </Key>
+    <Property Name="dealernr" Type="Int32" Nullable="false" />
+    <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Autoes" Relationship="Self.auto_dealer_fk" FromRole="Dealer" ToRole="Auto" />
+  </EntityType>
+  <EntityType Name="Onderhoud">
+    <Key>
+      <PropertyRef Name="onderhoudsdatum" />
+      <PropertyRef Name="auto_kenteken" />
+    </Key>
+    <Property Name="onderhoudsdatum" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="kosten" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="auto_kenteken" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="werkplaats_werkplaatsnr" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Auto" Relationship="Self.onderhoud_auto_fk" FromRole="Onderhoud" ToRole="Auto" />
+    <NavigationProperty Name="Werkplaat" Relationship="Self.onderhoud_werkplaats_fk" FromRole="Onderhoud" ToRole="Werkplaats" />
+  </EntityType>
+  <EntityType Name="Werkplaat">
+    <Key>
+      <PropertyRef Name="werkplaatsnr" />
+    </Key>
+    <Property Name="werkplaatsnr" Type="Int32" Nullable="false" />
+    <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Onderhouds" Relationship="Self.onderhoud_werkplaats_fk" FromRole="Werkplaats" ToRole="Onderhoud" />
+  </EntityType>
+  <Association Name="auto_dealer_fk">
+    <End Role="Dealer" Type="Self.Dealer" Multiplicity="1" />
+    <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dealer">
+        <PropertyRef Name="dealernr" />
+      </Principal>
+      <Dependent Role="Auto">
+        <PropertyRef Name="DEALER_DealerNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="onderhoud_auto_fk">
+    <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+    <End Role="Onderhoud" Type="Self.Onderhoud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auto">
+        <PropertyRef Name="kenteken" />
+      </Principal>
+      <Dependent Role="Onderhoud">
+        <PropertyRef Name="auto_kenteken" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="onderhoud_werkplaats_fk">
+    <End Role="Werkplaats" Type="Self.Werkplaat" Multiplicity="1" />
+    <End Role="Onderhoud" Type="Self.Onderhoud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Werkplaats">
+        <PropertyRef Name="werkplaatsnr" />
+      </Principal>
+      <Dependent Role="Onderhoud">
+        <PropertyRef Name="werkplaats_werkplaatsnr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WagenparkDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Autoes" EntityType="Self.Auto" />
+    <EntitySet Name="Dealers" EntityType="Self.Dealer" />
+    <EntitySet Name="Onderhouds" EntityType="Self.Onderhoud" />
+    <EntitySet Name="Werkplaats" EntityType="Self.Werkplaat" />
+    <AssociationSet Name="auto_dealer_fk" Association="Self.auto_dealer_fk">
+      <End Role="Dealer" EntitySet="Dealers" />
+      <End Role="Auto" EntitySet="Autoes" />
+    </AssociationSet>
+    <AssociationSet Name="onderhoud_auto_fk" Association="Self.onderhoud_auto_fk">
+      <End Role="Auto" EntitySet="Autoes" />
+      <End Role="Onderhoud" EntitySet="Onderhouds" />
+    </AssociationSet>
+    <AssociationSet Name="onderhoud_werkplaats_fk" Association="Self.onderhoud_werkplaats_fk">
+      <End Role="Werkplaats" EntitySet="Werkplaats" />
+      <End Role="Onderhoud" EntitySet="Onderhouds" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
@@ -16,15 +17,34 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.OnderhoudsDatum, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.onderhoudsdatum, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OnderhoudsDatum, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OnderhoudsDatum, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.onderhoudsdatum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.onderhoudsdatum, "", new { @class = "text-danger" })
             </div>
-            @Html.LabelFor(model => model.OnderhoudsKosten, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.auto_kenteken, "auto_kenteken", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OnderhoudsKosten, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OnderhoudsKosten, "", new { @class = "text-danger" })
+                @Html.DropDownList("auto_kenteken", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.auto_kenteken, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.kosten, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.kosten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.kosten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.werkplaats_werkplaatsnr, "werkplaats_werkplaatsnr", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("werkplaats_werkplaatsnr", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.werkplaats_werkplaatsnr, "", new { @class = "text-danger" })
             </div>
         </div>
 

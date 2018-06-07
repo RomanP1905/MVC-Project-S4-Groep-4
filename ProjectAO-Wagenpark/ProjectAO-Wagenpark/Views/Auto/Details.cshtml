@@ -1,0 +1,43 @@
+﻿@model ProjectAO_Wagenpark.Models.Auto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Auto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dealer.naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dealer.naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.merk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.merk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.kenteken }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

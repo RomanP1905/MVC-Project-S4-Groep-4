@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -12,30 +13,37 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.OnderhoudsDatum)
+            @Html.DisplayNameFor(model => model.Auto.merk)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OnderhoudsDatum)
+            @Html.DisplayFor(model => model.Auto.merk)
         </dd>
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.OnderhoudsKosten)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.OnderhoudsKosten)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Werkplaats.naam)
+        </dt>
 
-        </dl>
+        <dd>
+            @Html.DisplayFor(model => model.Werkplaats.naam)
+        </dd>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <dt>
+            @Html.DisplayNameFor(model => model.kosten)
+        </dt>
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
+        <dd>
+            @Html.DisplayFor(model => model.kosten)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
