@@ -1,8 +1,1 @@
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\b\ProjectAO-Wagenpark\bin\ApplicationInsights.config
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\b\ProjectAO-Wagenpark\bin\ProjectAO-Wagenpark.dll.config
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\b\ProjectAO-Wagenpark\bin\ProjectAO-Wagenpark.dll
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\b\ProjectAO-Wagenpark\bin\ProjectAO-Wagenpark.pdb
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\i\ProjectAO-Wagenpark\Release\ProjectAO-Wagenpark.csproj.CoreCompileInputs.cache
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\i\ProjectAO-Wagenpark\Release\ProjectAO-Wagenpark.csproj.CopyComplete
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\i\ProjectAO-Wagenpark\Release\ProjectAO-Wagenpark.dll
-C:\Users\Gebruiker\source\repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\i\ProjectAO-Wagenpark\Release\ProjectAO-Wagenpark.pdb
+C:\Users\Gebruiker\Source\Repos\MVC-Project-S4-Groep-44\ProjectAO-Wagenpark\.vs\ProjectAO-Wagenpark\lut\0\i\ProjectAO-Wagenpark\Release\ProjectAO-Wagenpark.csproj.CoreCompileInputs.cache
