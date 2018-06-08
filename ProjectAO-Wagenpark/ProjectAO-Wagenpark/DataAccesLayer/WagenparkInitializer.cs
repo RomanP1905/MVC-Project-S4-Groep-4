@@ -18,13 +18,13 @@ namespace ProjectAO_Wagenpark.DataAccesLayer
                 var autos = new List<Auto>
                 {
                     new Auto{
-                        Kenteken ="8PTS26",
-                        Merk ="Nissan",
+                        kenteken ="8PTS26",
+                        merk ="Nissan",
                         Type ="Quasqai"
                     },
                     new Auto{
-                        Kenteken ="4XJK76",
-                        Merk ="Ford",
+                        kenteken ="4XJK76",
+                        merk ="Ford",
                         Type ="Focus"
                     }
             };
@@ -35,13 +35,13 @@ namespace ProjectAO_Wagenpark.DataAccesLayer
                 {
                     new Dealer
                     {
-                        DealerNR =34,
-                        Naam ="Vroegop"
+                        dealernr =34,
+                        naam ="Vroegop"
                     },
                     new Dealer
                     {
-                    DealerNR = 73,
-                    Naam = "Bosmans"
+                    dealernr = 73,
+                    naam = "Bosmans"
                     }
                     };
                 dealers.ForEach(s => context.Dealers.Add(s));
@@ -50,23 +50,23 @@ namespace ProjectAO_Wagenpark.DataAccesLayer
                 {
                     new Werkplaats
                     {
-                        WerkplaatsNr = 2,
-                        Naam = "Quick"
+                        werkplaatsnr = 2,
+                        naam = "Quick"
                     },
                     new Werkplaats
                     {
-                        WerkplaatsNr = 18,
-                        Naam = "Cheap"
+                        werkplaatsnr = 18,
+                        naam = "Cheap"
                     },
                     new Werkplaats
                     {
-                        WerkplaatsNr = 14,
-                        Naam = "Fixit"
+                        werkplaatsnr = 14,
+                        naam = "Fixit"
                     },
                     new Werkplaats
                     {
-                        WerkplaatsNr = 6,
-                        Naam = "C&G"
+                        werkplaatsnr = 6,
+                        naam = "C&G"
                     }
                 };
                 werkplaats.ForEach(s => context.Werkplaats.Add(s));
@@ -76,44 +76,15 @@ namespace ProjectAO_Wagenpark.DataAccesLayer
                 {
                     new Onderhoud
                     {
-                        OnderhoudsDatum = 100316,
-                        OnderhoudsKosten = 345
+                        onderhoudsdatum = Convert.ToDateTime("2016-03-16"),
+                        kosten = 345
                     },
                     new Onderhoud
                     {
-                        OnderhoudsDatum = 240916,
-                        OnderhoudsKosten = 128
-                    },
-                    new Onderhoud
-                    {
-                        OnderhoudsDatum = 070317,
-                        OnderhoudsKosten = 175
-                    },
-                    new Onderhoud
-                    {
-                        OnderhoudsDatum = 021117,
-                        OnderhoudsKosten = 405
-                    },
-                    new Onderhoud
-                    {
-                        OnderhoudsDatum = 141016,
-                        OnderhoudsKosten = 190
-                    },
-                    new Onderhoud
-                    {
-                        OnderhoudsDatum = 140417,
-                        OnderhoudsKosten = 225
-                    },
-                    new Onderhoud
-                    {
-                        OnderhoudsDatum = 211017,
-                        OnderhoudsKosten = 310
-                    },
-                    new Onderhoud
-                    {
-                        OnderhoudsDatum = 190418,
-                        OnderhoudsKosten = 290
+                        onderhoudsdatum = Convert.ToDateTime("2016-09-24"),
+                        kosten = 128
                     }
+                    
                 };
                 Onderhoud.ForEach(s => context.Onderhouds.Add(s));
                 context.SaveChanges();

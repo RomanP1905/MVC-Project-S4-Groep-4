@@ -6,14 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProjectAO_Wagenpark.DataAccesLayer;
 using ProjectAO_Wagenpark.Models;
 
 namespace ProjectAO_Wagenpark.Controllers
 {
     public class WerkplaatsController : Controller
     {
-        private WagenparkContext db = new WagenparkContext();
+        private WagenparkDBModel db = new WagenparkDBModel();
 
         // GET: Werkplaats
         public ActionResult Index()
@@ -37,7 +36,6 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Werkplaats/Create
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -48,8 +46,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "WerkplaatsNr,Naam")] Werkplaats werkplaats)
+        public ActionResult Create([Bind(Include = "Werkplaatsnr,Naam")] Werkplaats werkplaats)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +59,6 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Werkplaats/Edit/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,8 +78,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "WerkplaatsNr,Naam")] Werkplaats werkplaats)
+        public ActionResult Edit([Bind(Include = "Werkplaatsnr,Naam")] Werkplaats werkplaats)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +90,6 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Werkplaats/Delete/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +107,6 @@ namespace ProjectAO_Wagenpark.Controllers
         // POST: Werkplaats/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Werkplaats werkplaats = db.Werkplaats.Find(id);

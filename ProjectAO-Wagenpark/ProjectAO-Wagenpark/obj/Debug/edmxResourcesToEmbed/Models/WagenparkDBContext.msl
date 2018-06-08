@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WagenparkDBModelStoreContainer" CdmEntityContainer="WagenparkDBEntities">
+    <EntitySetMapping Name="Autoes">
+      <EntityTypeMapping TypeName="WagenparkDBModel.Auto">
+        <MappingFragment StoreEntitySet="Auto">
+          <ScalarProperty Name="kenteken" ColumnName="kenteken" />
+          <ScalarProperty Name="merk" ColumnName="merk" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DEALER_DealerNr" ColumnName="DEALER_DealerNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dealers">
+      <EntityTypeMapping TypeName="WagenparkDBModel.Dealer">
+        <MappingFragment StoreEntitySet="Dealer">
+          <ScalarProperty Name="dealernr" ColumnName="dealernr" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Onderhouds">
+      <EntityTypeMapping TypeName="WagenparkDBModel.Onderhoud">
+        <MappingFragment StoreEntitySet="Onderhoud">
+          <ScalarProperty Name="onderhoudsdatum" ColumnName="onderhoudsdatum" />
+          <ScalarProperty Name="kosten" ColumnName="kosten" />
+          <ScalarProperty Name="auto_kenteken" ColumnName="auto_kenteken" />
+          <ScalarProperty Name="werkplaats_werkplaatsnr" ColumnName="werkplaats_werkplaatsnr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Werkplaats">
+      <EntityTypeMapping TypeName="WagenparkDBModel.Werkplaat">
+        <MappingFragment StoreEntitySet="Werkplaats">
+          <ScalarProperty Name="werkplaatsnr" ColumnName="werkplaatsnr" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

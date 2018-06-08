@@ -6,29 +6,38 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProjectAO_Wagenpark.DataAccesLayer;
 using ProjectAO_Wagenpark.Models;
 
 namespace ProjectAO_Wagenpark.Controllers
 {
     public class OnderhoudsController : Controller
     {
-        private WagenparkContext db = new WagenparkContext();
+        private WagenparkDBModel db = new WagenparkDBModel();
 
         // GET: Onderhouds
         public ActionResult Index()
         {
-            return View(db.Onderhouds.ToList());
+            var onderhoud = db.Onderhoud.Include(o => o.Auto).Include(o => o.Werkplaats);
+
+            //var onderhoud = from oh in db.Onderhoud
+            //                 join au in db.Auto on oh.Auto_Kenteken equals au.Kenteken
+            //                 join dl in db.Dealer on au.DEALER_DealerNr equals dl.Dealernr
+            //                 where au.DEALER_DealerNr == dl.Dealernr
+            //                 select oh;
+            
+
+
+            return View(onderhoud.ToList());
         }
 
         // GET: Onderhouds/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(DateTime id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Onderhoud onderhoud = db.Onderhouds.Find(id);
+            Onderhoud onderhoud = db.Onderhoud.Find(id);
             if (onderhoud == null)
             {
                 return HttpNotFound();
@@ -37,9 +46,10 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Onderhouds/Create
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk");
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam");
             return View();
         }
 
@@ -48,32 +58,34 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "OnderhoudsDatum,OnderhoudsKosten")] Onderhoud onderhoud)
+        public ActionResult Create([Bind(Include = "Onderhoudsdatum,Auto_Kenteken,Kosten,Werkplaats_Werkplaatsnr")] Onderhoud onderhoud)
         {
             if (ModelState.IsValid)
             {
-                db.Onderhouds.Add(onderhoud);
+                db.Onderhoud.Add(onderhoud);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk", onderhoud.Auto_Kenteken);
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam", onderhoud.Werkplaats_Werkplaatsnr);
             return View(onderhoud);
         }
 
         // GET: Onderhouds/Edit/5
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(DateTime id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Onderhoud onderhoud = db.Onderhouds.Find(id);
+            Onderhoud onderhoud = db.Onderhoud.Find(id);
             if (onderhoud == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk", onderhoud.Auto_Kenteken);
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam", onderhoud.Werkplaats_Werkplaatsnr);
             return View(onderhoud);
         }
 
@@ -82,8 +94,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "OnderhoudsDatum,OnderhoudsKosten")] Onderhoud onderhoud)
+        public ActionResult Edit([Bind(Include = "Onderhoudsdatum,Auto_Kenteken,Kosten,Werkplaats_Werkplaatsnr")] Onderhoud onderhoud)
         {
             if (ModelState.IsValid)
             {
@@ -91,18 +102,19 @@ namespace ProjectAO_Wagenpark.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk", onderhoud.Auto_Kenteken);
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam", onderhoud.Werkplaats_Werkplaatsnr);
             return View(onderhoud);
         }
 
         // GET: Onderhouds/Delete/5
-        [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(DateTime id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Onderhoud onderhoud = db.Onderhouds.Find(id);
+            Onderhoud onderhoud = db.Onderhoud.Find(id);
             if (onderhoud == null)
             {
                 return HttpNotFound();
@@ -113,11 +125,10 @@ namespace ProjectAO_Wagenpark.Controllers
         // POST: Onderhouds/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(DateTime id)
         {
-            Onderhoud onderhoud = db.Onderhouds.Find(id);
-            db.Onderhouds.Remove(onderhoud);
+            Onderhoud onderhoud = db.Onderhoud.Find(id);
+            db.Onderhoud.Remove(onderhoud);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

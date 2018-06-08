@@ -6,19 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProjectAO_Wagenpark.DataAccesLayer;
 using ProjectAO_Wagenpark.Models;
 
 namespace ProjectAO_Wagenpark.Controllers
 {
     public class DealersController : Controller
     {
-        private WagenparkContext db = new WagenparkContext();
+        private WagenparkDBModel db = new WagenparkDBModel();
 
         // GET: Dealers
         public ActionResult Index()
         {
-            return View(db.Dealers.ToList());
+            return View(db.Dealer.ToList());
         }
 
         // GET: Dealers/Details/5
@@ -28,7 +27,7 @@ namespace ProjectAO_Wagenpark.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dealer dealer = db.Dealers.Find(id);
+            Dealer dealer = db.Dealer.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -37,7 +36,6 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Dealers/Create
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -48,12 +46,11 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "DealerNR,Naam")] Dealer dealer)
+        public ActionResult Create([Bind(Include = "Dealernr,Naam")] Dealer dealer)
         {
             if (ModelState.IsValid)
             {
-                db.Dealers.Add(dealer);
+                db.Dealer.Add(dealer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -62,14 +59,13 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Dealers/Edit/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dealer dealer = db.Dealers.Find(id);
+            Dealer dealer = db.Dealer.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -82,8 +78,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "DealerNR,Naam")] Dealer dealer)
+        public ActionResult Edit([Bind(Include = "Dealernr,Naam")] Dealer dealer)
         {
             if (ModelState.IsValid)
             {
@@ -95,14 +90,13 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Dealers/Delete/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dealer dealer = db.Dealers.Find(id);
+            Dealer dealer = db.Dealer.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -113,11 +107,10 @@ namespace ProjectAO_Wagenpark.Controllers
         // POST: Dealers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Dealer dealer = db.Dealers.Find(id);
-            db.Dealers.Remove(dealer);
+            Dealer dealer = db.Dealer.Find(id);
+            db.Dealer.Remove(dealer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
