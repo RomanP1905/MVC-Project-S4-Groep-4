@@ -10,6 +10,7 @@ using ProjectAO_Wagenpark.Models;
 
 namespace ProjectAO_Wagenpark.Controllers
 {
+    [Authorize(Roles = "Admin , Dealer")]
     public class AutoController : Controller
     {
         private WagenparkDBModel db = new WagenparkDBModel();
