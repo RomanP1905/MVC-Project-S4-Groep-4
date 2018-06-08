@@ -20,13 +20,13 @@ namespace ProjectAO_Wagenpark.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Auto>()
-                .Property(e => e.kenteken)
+                .Property(e => e.Kenteken)
                 .IsFixedLength();
 
             modelBuilder.Entity<Auto>()
                 .HasMany(e => e.Onderhoud)
                 .WithRequired(e => e.Auto)
-                .HasForeignKey(e => e.auto_kenteken)
+                .HasForeignKey(e => e.Auto_Kenteken)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Dealer>()
@@ -36,17 +36,17 @@ namespace ProjectAO_Wagenpark.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Onderhoud>()
-                .Property(e => e.kosten)
+                .Property(e => e.Kosten)
                 .HasPrecision(10, 4);
 
             modelBuilder.Entity<Onderhoud>()
-                .Property(e => e.auto_kenteken)
+                .Property(e => e.Auto_Kenteken)
                 .IsFixedLength();
 
             modelBuilder.Entity<Werkplaats>()
                 .HasMany(e => e.Onderhoud)
                 .WithRequired(e => e.Werkplaats)
-                .HasForeignKey(e => e.werkplaats_werkplaatsnr)
+                .HasForeignKey(e => e.Werkplaats_Werkplaatsnr)
                 .WillCascadeOnDelete(false);
         }
     }

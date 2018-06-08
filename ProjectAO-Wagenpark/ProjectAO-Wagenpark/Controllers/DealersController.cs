@@ -46,7 +46,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "dealernr,naam")] Dealer dealer)
+        public ActionResult Create([Bind(Include = "Dealernr,Naam")] Dealer dealer)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "dealernr,naam")] Dealer dealer)
+        public ActionResult Edit([Bind(Include = "Dealernr,Naam")] Dealer dealer)
         {
             if (ModelState.IsValid)
             {

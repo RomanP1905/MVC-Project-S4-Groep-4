@@ -39,7 +39,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // GET: Auto/Create
         public ActionResult Create()
         {
-            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "dealernr", "naam");
+            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "Dealernr", "Naam");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "kenteken,merk,Type,DEALER_DealerNr")] Auto auto)
+        public ActionResult Create([Bind(Include = "Kenteken,Merk,Type,DEALER_DealerNr")] Auto auto)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace ProjectAO_Wagenpark.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "dealernr", "naam", auto.DEALER_DealerNr);
+            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "Dealernr", "Naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 
@@ -73,7 +73,7 @@ namespace ProjectAO_Wagenpark.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "dealernr", "naam", auto.DEALER_DealerNr);
+            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "Dealernr", "Naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 
@@ -82,7 +82,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "kenteken,merk,Type,DEALER_DealerNr")] Auto auto)
+        public ActionResult Edit([Bind(Include = "Kenteken,Merk,Type,DEALER_DealerNr")] Auto auto)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace ProjectAO_Wagenpark.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "dealernr", "naam", auto.DEALER_DealerNr);
+            ViewBag.DEALER_DealerNr = new SelectList(db.Dealer, "Dealernr", "Naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 

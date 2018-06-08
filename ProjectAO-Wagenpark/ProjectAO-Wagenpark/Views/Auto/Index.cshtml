@@ -13,16 +13,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.kenteken)
+            @Html.DisplayNameFor(model => model.Kenteken)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.merk)
+            @Html.DisplayNameFor(model => model.Merk)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Dealer.naam)
+            @Html.DisplayNameFor(model => model.Dealer.Naam)
         </th>
         <th></th>
     </tr>
@@ -30,21 +30,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.kenteken)
+            @Html.DisplayFor(modelItem => item.Kenteken)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.merk)
+            @Html.DisplayFor(modelItem => item.Merk)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Dealer.naam)
+            @Html.DisplayFor(modelItem => item.Dealer.Naam)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.kenteken }) |
-            @Html.ActionLink("Details", "Details", new { id = item.kenteken }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.kenteken })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Kenteken }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Kenteken }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Kenteken })
         </td>
     </tr>
 }

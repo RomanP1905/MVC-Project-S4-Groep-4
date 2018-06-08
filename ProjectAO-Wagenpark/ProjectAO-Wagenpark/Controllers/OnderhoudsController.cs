@@ -20,9 +20,9 @@ namespace ProjectAO_Wagenpark.Controllers
             var onderhoud = db.Onderhoud.Include(o => o.Auto).Include(o => o.Werkplaats);
 
             //var onderhoud = from oh in db.Onderhoud
-            //                 join au in db.Auto on oh.auto_kenteken equals au.kenteken
-            //                 join dl in db.Dealer on au.DEALER_DealerNr equals dl.dealernr
-            //                 where au.DEALER_DealerNr == dl.dealernr
+            //                 join au in db.Auto on oh.Auto_Kenteken equals au.Kenteken
+            //                 join dl in db.Dealer on au.DEALER_DealerNr equals dl.Dealernr
+            //                 where au.DEALER_DealerNr == dl.Dealernr
             //                 select oh;
             
 
@@ -48,8 +48,8 @@ namespace ProjectAO_Wagenpark.Controllers
         // GET: Onderhouds/Create
         public ActionResult Create()
         {
-            ViewBag.auto_kenteken = new SelectList(db.Auto, "kenteken", "merk");
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.Werkplaats, "werkplaatsnr", "naam");
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk");
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "onderhoudsdatum,auto_kenteken,kosten,werkplaats_werkplaatsnr")] Onderhoud onderhoud)
+        public ActionResult Create([Bind(Include = "Onderhoudsdatum,Auto_Kenteken,Kosten,Werkplaats_Werkplaatsnr")] Onderhoud onderhoud)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace ProjectAO_Wagenpark.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.auto_kenteken = new SelectList(db.Auto, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.Werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk", onderhoud.Auto_Kenteken);
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam", onderhoud.Werkplaats_Werkplaatsnr);
             return View(onderhoud);
         }
 
@@ -84,8 +84,8 @@ namespace ProjectAO_Wagenpark.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.auto_kenteken = new SelectList(db.Auto, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.Werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk", onderhoud.Auto_Kenteken);
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam", onderhoud.Werkplaats_Werkplaatsnr);
             return View(onderhoud);
         }
 
@@ -94,7 +94,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "onderhoudsdatum,auto_kenteken,kosten,werkplaats_werkplaatsnr")] Onderhoud onderhoud)
+        public ActionResult Edit([Bind(Include = "Onderhoudsdatum,Auto_Kenteken,Kosten,Werkplaats_Werkplaatsnr")] Onderhoud onderhoud)
         {
             if (ModelState.IsValid)
             {
@@ -102,8 +102,8 @@ namespace ProjectAO_Wagenpark.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.auto_kenteken = new SelectList(db.Auto, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.Werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk", onderhoud.Auto_Kenteken);
+            ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam", onderhoud.Werkplaats_Werkplaatsnr);
             return View(onderhoud);
         }
 

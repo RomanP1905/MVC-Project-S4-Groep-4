@@ -17,10 +17,10 @@ namespace ProjectAO_Wagenpark.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int dealernr { get; set; }
+        public int Dealernr { get; set; }
 
         [StringLength(20)]
-        public string naam { get; set; }
+        public string Naam { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auto> Auto { get; set; }

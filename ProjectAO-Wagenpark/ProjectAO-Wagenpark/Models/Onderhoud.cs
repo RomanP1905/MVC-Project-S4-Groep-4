@@ -11,17 +11,17 @@ namespace ProjectAO_Wagenpark.Models
     {
         [Key]
         [Column(Order = 0, TypeName = "date")]
-        public DateTime onderhoudsdatum { get; set; }
+        public DateTime Onderhoudsdatum { get; set; }
 
         [Column(TypeName = "smallmoney")]
-        public decimal? kosten { get; set; }
+        public decimal? Kosten { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(6)]
-        public string auto_kenteken { get; set; }
+        public string Auto_Kenteken { get; set; }
 
-        public int werkplaats_werkplaatsnr { get; set; }
+        public int Werkplaats_Werkplaatsnr { get; set; }
 
         public virtual Auto Auto { get; set; }
 

@@ -17,10 +17,10 @@ namespace ProjectAO_Wagenpark.Models
 
         [Key]
         [StringLength(6)]
-        public string kenteken { get; set; }
+        public string Kenteken { get; set; }
 
         [StringLength(25)]
-        public string merk { get; set; }
+        public string Merk { get; set; }
 
         [StringLength(25)]
         public string Type { get; set; }

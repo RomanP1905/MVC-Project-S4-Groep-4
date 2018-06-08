@@ -46,7 +46,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "werkplaatsnr,naam")] Werkplaats werkplaats)
+        public ActionResult Create([Bind(Include = "Werkplaatsnr,Naam")] Werkplaats werkplaats)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "werkplaatsnr,naam")] Werkplaats werkplaats)
+        public ActionResult Edit([Bind(Include = "Werkplaatsnr,Naam")] Werkplaats werkplaats)
         {
             if (ModelState.IsValid)
             {

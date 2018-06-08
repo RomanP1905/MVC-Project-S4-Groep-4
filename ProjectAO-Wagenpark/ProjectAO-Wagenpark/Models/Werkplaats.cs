@@ -16,11 +16,11 @@ namespace ProjectAO_Wagenpark.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int werkplaatsnr { get; set; }
+        public int Werkplaatsnr { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string naam { get; set; }
+        public string Naam { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Onderhoud> Onderhoud { get; set; }
