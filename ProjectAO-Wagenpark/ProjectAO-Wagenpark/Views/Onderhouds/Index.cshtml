@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.onderhoudsdatum)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Auto.merk)
         </th>
         <th>
@@ -26,6 +29,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.onderhoudsdatum)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Auto.merk)
         </td>
