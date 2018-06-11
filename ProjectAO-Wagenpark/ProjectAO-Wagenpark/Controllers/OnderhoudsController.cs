@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using ProjectAO_Wagenpark.Models;
 
 namespace ProjectAO_Wagenpark.Controllers
@@ -18,13 +21,20 @@ namespace ProjectAO_Wagenpark.Controllers
         // GET: Onderhouds
         public ActionResult Index()
         {
-            var onderhoud = db.Onderhoud.Include(o => o.Auto).Include(o => o.Werkplaats);
+            //var onderhoud = db.Onderhoud.Include(o => o.Auto).Include(o => o.Werkplaats);
 
-            //var onderhoud = from oh in db.Onderhoud
-            //                 join au in db.Auto on oh.Auto_Kenteken equals au.Kenteken
-            //                 join dl in db.Dealer on au.DEALER_DealerNr equals dl.Dealernr
-            //                 where au.DEALER_DealerNr == dl.Dealernr
-            //                 select oh;
+            UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var user = UserManager.FindById(User.Identity.GetUserId());
+
+            string emailstring = user.Email;
+                
+
+
+            var onderhoud = from oh in db.Onderhoud
+                            join au in db.Auto on oh.Auto_Kenteken equals au.Kenteken
+                            join dl in db.Dealer on au.DEALER_DealerNr equals dl.Dealernr
+                            where dl.Dealer_email == emailstring
+                            select oh;
             
 
 
@@ -32,13 +42,13 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Onderhouds/Details/5
-        public ActionResult Details(DateTime id)
+        public ActionResult Details(DateTime datumID, string kentekenID)
         {
-            if (id == null)
+            if (datumID == null || kentekenID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Onderhoud onderhoud = db.Onderhoud.Find(id);
+            Onderhoud onderhoud = db.Onderhoud.Find(datumID, kentekenID);
             if (onderhoud == null)
             {
                 return HttpNotFound();
@@ -49,7 +59,7 @@ namespace ProjectAO_Wagenpark.Controllers
         // GET: Onderhouds/Create
         public ActionResult Create()
         {
-            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk");
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Kenteken");
             ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam");
             return View();
         }
@@ -74,18 +84,18 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Onderhouds/Edit/5
-        public ActionResult Edit(DateTime id)
+        public ActionResult Edit(DateTime datumID, string kentekenID)
         {
-            if (id == null)
+            if (datumID == null || kentekenID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Onderhoud onderhoud = db.Onderhoud.Find(id);
+            Onderhoud onderhoud = db.Onderhoud.Find(datumID, kentekenID);
             if (onderhoud == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Merk", onderhoud.Auto_Kenteken);
+            ViewBag.Auto_Kenteken = new SelectList(db.Auto, "Kenteken", "Kenteken", onderhoud.Auto_Kenteken);
             ViewBag.Werkplaats_Werkplaatsnr = new SelectList(db.Werkplaats, "Werkplaatsnr", "Naam", onderhoud.Werkplaats_Werkplaatsnr);
             return View(onderhoud);
         }
@@ -109,13 +119,13 @@ namespace ProjectAO_Wagenpark.Controllers
         }
 
         // GET: Onderhouds/Delete/5
-        public ActionResult Delete(DateTime id)
+        public ActionResult Delete(DateTime datumID, string kentekenID)
         {
-            if (id == null)
+            if (datumID == null || kentekenID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Onderhoud onderhoud = db.Onderhoud.Find(id);
+            Onderhoud onderhoud = db.Onderhoud.Find(datumID, kentekenID);
             if (onderhoud == null)
             {
                 return HttpNotFound();
@@ -126,9 +136,9 @@ namespace ProjectAO_Wagenpark.Controllers
         // POST: Onderhouds/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(DateTime id)
+        public ActionResult DeleteConfirmed(DateTime datumID, string kentekenID)
         {
-            Onderhoud onderhoud = db.Onderhoud.Find(id);
+            Onderhoud onderhoud = db.Onderhoud.Find(datumID, kentekenID);
             db.Onderhoud.Remove(onderhoud);
             db.SaveChanges();
             return RedirectToAction("Index");

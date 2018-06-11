@@ -33,7 +33,7 @@
             @Html.DisplayFor(modelItem => item.Onderhoudsdatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Auto.Merk)
+            @Html.DisplayFor(modelItem => item.Auto.Kenteken)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Werkplaats.Naam)
@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.Kosten)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new {  datumID=item.Onderhoudsdatum, kentekenID=item.Auto_Kenteken }) |
+            @Html.ActionLink("Details", "Details", new { datumID = item.Onderhoudsdatum, kentekenID = item.Auto_Kenteken }) |
+            @Html.ActionLink("Delete", "Delete", new { datumID = item.Onderhoudsdatum, kentekenID = item.Auto_Kenteken })
         </td>
     </tr>
 }

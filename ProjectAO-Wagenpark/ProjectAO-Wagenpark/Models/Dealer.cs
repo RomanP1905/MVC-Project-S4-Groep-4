@@ -22,6 +22,9 @@ namespace ProjectAO_Wagenpark.Models
         [StringLength(20)]
         public string Naam { get; set; }
 
+        [StringLength(100)]
+        public string Dealer_email { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auto> Auto { get; set; }
     }
