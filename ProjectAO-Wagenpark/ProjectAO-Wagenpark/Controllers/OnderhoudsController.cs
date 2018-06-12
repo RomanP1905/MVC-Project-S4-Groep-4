@@ -26,19 +26,27 @@ namespace ProjectAO_Wagenpark.Controllers
             UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var user = UserManager.FindById(User.Identity.GetUserId());
 
-            string emailstring = user.Email;
-                
+            if (User.IsInRole("Dealer"))
+            {
+                string emailstring = user.Email;
 
 
-            var onderhoud = from oh in db.Onderhoud
-                            join au in db.Auto on oh.Auto_Kenteken equals au.Kenteken
-                            join dl in db.Dealer on au.DEALER_DealerNr equals dl.Dealernr
-                            where dl.Dealer_email == emailstring
-                            select oh;
+
+                var onderhoud = from oh in db.Onderhoud
+                                join au in db.Auto on oh.Auto_Kenteken equals au.Kenteken
+                                join dl in db.Dealer on au.DEALER_DealerNr equals dl.Dealernr
+                                where dl.Dealer_email == emailstring
+                                select oh;
+                return View(onderhoud.ToList());
+            }
+            else
+            {
+                var onderhoud = db.Onderhoud.Include(o => o.Auto).Include(o => o.Werkplaats);
+                return View(onderhoud.ToList());
+            }
             
 
-
-            return View(onderhoud.ToList());
+            
         }
 
         // GET: Onderhouds/Details/5
